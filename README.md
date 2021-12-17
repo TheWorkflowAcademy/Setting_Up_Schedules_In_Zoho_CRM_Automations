@@ -2,25 +2,23 @@
 
 
 ## Use Case
-There may be times wherea function or action needs to run in Zoho CRM at set intervals, such as updating Current Age field for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to manually edit a record each time you want a function to trigger. If you are needing to update more than 200 records at a time, check out the Workflow Academy's *[API pagination Github repo](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*.
-
-
+There may be times where a function or action needs to run in Zoho CRM at set intervals, such as updating the Current Age field for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to manually edit a record each time you want a function to trigger. If you are needing to update more than 1000 records at a time, check out the Workflow Academy's *[API pagination Github repo](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*.
 
 
 
 ## Set Up
 
-To set up a schdedule, navigate to Settings > Automation > Schedules. Click on "Create New Schedule".
+To set up a schedule, navigate to Settings > Automation > Schedules in the CRM. Click on the "Create New Schedule" button.
 
 <img src="create.PNG" width="600">
 
-Select either "Writing Function" or "From existing functions". Note - if you decide to use a previously written function, use a parameterless function (eg: don't select a module and id) since these actions aren't tied to a specific record. For new functions, you won't see the usual list of modules if you try to add parameters. Don't select any modules. 
+Select either "Writing Function" or "From existing functions". Note - if you decide to use a previously written function, it will need to be a parameterless function (eg: don't select a module and id) since these actions aren't tied to a specific record. For new functions, you won't see the usual list of modules if you try to add parameters. Don't any any parameters.
 For this tutorial, we will be writing a new function to update the Current Age field.
 
 ## Write Your Function
 
-There are a couple of ways to implement this. If you don't anticipate having more than 1000 records at any time to search, your function may look like the sample below.
-First, you will need to get a list of all records in the module, or custom view, depending on your use case. Next, iterate over all records that you want to perform your function on. This particular function calculates the age based on the Contact Date of Birth field, then sets the Current Age field accordingly.
+There are a couple of ways to implement this. If you don't anticipate having more than 1000 records at any one time to search, your function may look like the sample below.
+First, you will need to get a list of all records in the module, or custom view, depending on your use case. Next, iterate over all records that you want to perform your function on. This particular function calculates the age based on the Contact Date of Birth field as long as it's not null, then sets the Current Age field accordingly.
 
 ```
 getContacts = zoho.crm.getRecords("Contacts");
@@ -35,7 +33,7 @@ for each r in getContacts
 	updateRecord = zoho.crm.updateRecord("Contacts",contactID,{"Current_Age":calAge});
 }
 ```
-OR
+**OR
 
 If there are more than 1000 records that will need to be updated at any one time, add your pagination code first. If you need help setting this up, please see WFA's repo *[here](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*. 
 
@@ -56,9 +54,7 @@ for each  page in pageIterationList
 			connection:"crm"
 		];
 		records = response.get("data");
-		//info records;
 		allRecords.addAll(records);
-		info allRecords;
 		if(records.size() < perPage)
 		{
 			iterationComplete = true;
@@ -67,7 +63,7 @@ for each  page in pageIterationList
 }
 
 ```
-Next, use the allRecords list to iterate through and update each record.
+Next, use the allRecords list variable set in the pagination code above to iterate through and update each record.
 
 
 ```
@@ -82,9 +78,14 @@ for each r in getContacts
 	}
 	updateRecord = zoho.crm.updateRecord("Contacts",contactID,{"Current_Age":calAge});
 }
-``
+```
+
+Saving the function will bring you back to the Schedule page where you will finish scheduling the function.
 
 
+<img src="schedule.PNG" width="600">
+
+```
 * A Zoho Creator form with:
   * a note field
   * an Account ID field
@@ -93,11 +94,6 @@ for each r in getContacts
 You will need to have in place:
 
 * CRM oauth connection in Creator
-
-
-<img src="schedule.PNG">
-
-```
 
 add code block here
 
