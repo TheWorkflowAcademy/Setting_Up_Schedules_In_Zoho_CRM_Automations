@@ -37,8 +37,7 @@ for each r in getContacts
 ```
 OR
 
-If there are more than 1000 records that will need to be updated at any one time, please follow the directions below. 
-First, add your pagination code. If you need help setting this up, please see WFA's repo *[here](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*. 
+If there are more than 1000 records that will need to be updated at any one time, add your pagination code first. If you need help setting this up, please see WFA's repo *[here](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*. 
 
 ```
 allRecords = List();
@@ -68,9 +67,22 @@ for each  page in pageIterationList
 }
 
 ```
+Next, use the allRecords list to iterate through and update each record.
 
 
-
+```
+getContacts = allRecords;
+for each r in getContacts
+{
+	contactID = r.get("id");
+	dob = r.get("Date_of_Birth");
+	if(dob != null){
+		daysBetween = dob.daysBetween(zoho.currentdate);
+		calAge = (daysBetween / 365).floor();
+	}
+	updateRecord = zoho.crm.updateRecord("Contacts",contactID,{"Current_Age":calAge});
+}
+``
 
 
 * A Zoho Creator form with:
