@@ -18,16 +18,15 @@ For this tutorial, we will be writing a new function to update the Age Group dro
 
 ## Write Your Function
 
+First, you will need to get a list of all records in the module, or custom view, depending on your use case. Next, iterate over all records that you want to perform your function on. This particular function calculates the age based on the Contact Date of Birth field, then sets the Age Group field accordingly.
+
 ```
  getContacts = zoho.crm.getRecords("Contacts");
 for each  contact in getContacts
 {
 	dob = contact.get("Date_of_Birth");
-	info dob;
 	daysBetween = dob.daysBetween(zoho.currentdate);
-	info daysBetween;
-	calAge = (daysBetween / 365).floor();
-	info calAge;
+	calAge = (daysBetween / 365).floor(); //floor prevents the date of birth rounding up before the next birthday
 	cMap = Map();
 	if(calAge < 0)
 	{
@@ -41,17 +40,12 @@ for each  contact in getContacts
 	{
 		cMap.put("Age_Group","6-11");
 	}
-	else if(calAge >= 12 && calAge <= 17)
-	{
-		cMap.put("Age_Group","12-17");
-	}
-	else if(calAge >= 18 && calAge <= 23)
-	{
 	.....
 	update = zoho.crm.updateRecord("Contacts",contact.get("id"),cMap);
 }
 ```
 
+Because we would like this functionality to be scalable, we'll next add the pagination 
 * A Zoho Creator form with:
   * a note field
   * an Account ID field
