@@ -5,11 +5,15 @@
 There may be times where we need a function or action to run in Zoho CRM repeatedly at set intervals, such as updating the age for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to edit a record to trigger a function manually.
 
 <img src="schedule.PNG">
-<img src="create.PNG">
+
 
 ## Set Up
-Prior knowledge of HTML, CSS, and Deluge will be helpful. For this example, we will use the Accounts and Contacts modules, but any modules could be used. 
-We will set up the following:
+
+To set this up, navigate to Settings > Automation > Schedules. Click on "Create New Schedule".
+<img src="create.PNG">
+
+*Note you can use a previously written function or write a new one, but since this isn't tied to a specific record, no parameters are needed.
+
 
 * A Zoho Creator form with:
   * a note field
