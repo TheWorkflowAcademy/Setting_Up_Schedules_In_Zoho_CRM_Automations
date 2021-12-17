@@ -2,7 +2,7 @@
 
 
 ## Use Case
-There may be times where we need a function or action to run in Zoho CRM repeatedly at set intervals, such as updating the age or an age group for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to manually edit a record to trigger a function. If you are needed to update more than 200 records at a time, check out the Workflow Academy's *[API pagination Githu](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*.
+There may be times where we need a function or action to run in Zoho CRM repeatedly at set intervals, such as updating the age or an age group for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to manually edit a record to trigger a function. If you are needed to update more than 200 records at a time, check out the Workflow Academy's *[API pagination Github repo](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*.
 
 <img src="schedule.PNG">
 
