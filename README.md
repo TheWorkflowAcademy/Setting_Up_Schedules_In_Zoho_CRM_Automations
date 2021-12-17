@@ -84,16 +84,4 @@ Saving the function will bring you back to the Schedule page where you will fini
 
 <img src="schedule.PNG" width="600">
 
-```
-* A Zoho Creator form with:
-  * a note field
-  * an Account ID field
-* User input workflow to initalize the table
 
-You will need to have in place:
-
-* CRM oauth connection in Creator
-
-add code block here
-
-```
