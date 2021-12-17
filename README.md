@@ -10,7 +10,8 @@ There may be times where we need a function or action to run in Zoho CRM repeate
 ## Set Up
 
 To set up a schdedule, navigate to Settings > Automation > Schedules. Click on "Create New Schedule".
-<img src="create.PNG" width="200">
+
+<img src="create.PNG" width="400">
 
 *Note you can use a previously written function or write a new one, but since these actions aren't tied to a specific record, no parameters are needed.
 
