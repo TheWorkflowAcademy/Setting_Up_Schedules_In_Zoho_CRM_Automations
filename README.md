@@ -18,7 +18,7 @@ For this tutorial, we will be writing a new function to update the Age Group dro
 
 ## Write Your Function
 
-<code>
+```
  getContacts = zoho.crm.getRecords("Contacts");
 for each  contact in getContacts
 {
@@ -50,7 +50,7 @@ for each  contact in getContacts
 	.....
 	update = zoho.crm.updateRecord("Contacts",contact.get("id"),cMap);
 }
- </code>
+```
 
 * A Zoho Creator form with:
   * a note field
