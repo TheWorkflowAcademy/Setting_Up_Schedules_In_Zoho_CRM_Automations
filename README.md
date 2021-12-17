@@ -2,17 +2,17 @@
 
 
 ## Use Case
-There may be times where we need a function or action to run in Zoho CRM repeatedly at set intervals, such as updating the age for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to edit a record to trigger a function manually.
+There may be times where we need a function or action to run in Zoho CRM repeatedly at set intervals, such as updating the age or an age group for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to manually edit a record to trigger a function.
 
 <img src="schedule.PNG">
 
 
 ## Set Up
 
-To set this up, navigate to Settings > Automation > Schedules. Click on "Create New Schedule".
-<img src="create.PNG">
+To set up a schdedule, navigate to Settings > Automation > Schedules. Click on "Create New Schedule".
+<img src="create.PNG" width="200px">
 
-*Note you can use a previously written function or write a new one, but since this isn't tied to a specific record, no parameters are needed.
+*Note you can use a previously written function or write a new one, but since these actions aren't tied to a specific record, no parameters are needed.
 
 
 * A Zoho Creator form with:
