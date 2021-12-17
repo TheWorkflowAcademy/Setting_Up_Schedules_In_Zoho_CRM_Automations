@@ -2,7 +2,7 @@
 
 
 ## Use Case
-There may be times where a function or action needs to run in Zoho CRM at set intervals, such as updating the Current Age field for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to manually edit a record each time you want a function to trigger. If you are needing to update more than 1000 records at a time, check out the Workflow Academy's *[API pagination Github repo](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*.
+There may be times where a function or action needs to run in Zoho CRM at set intervals, such as updating the Current Age field for all Contacts on a weekly basis. Setting up a schedule in automation allows you this capability without having to manually edit a record each time you want a function to trigger. If you are needing to update more than 1,000 records at a time, check out the Workflow Academy's *[API pagination Github repo](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*.
 
 
 
@@ -17,7 +17,7 @@ For this tutorial, we will be writing a new function to update the Current Age f
 
 ## Write Your Function
 
-There are a couple of ways to implement this. If you don't anticipate having more than 1000 records at any one time to search, your function may look like the sample below.
+There are a couple of ways to implement this. If you don't anticipate having more than 1,000 records at any one time to search, your function may look like the sample below.
 First, you will need to get a list of all records in the module, or custom view, depending on your use case. Next, iterate over all records that you want to perform your function on. This particular function calculates the age based on the Contact Date of Birth field as long as it's not null, then sets the Current Age field accordingly.
 
 ```
@@ -33,9 +33,9 @@ for each r in getContacts
 	updateRecord = zoho.crm.updateRecord("Contacts",contactID,{"Current_Age":calAge});
 }
 ```
-**OR
+**OR**
 
-If there are more than 1000 records that will need to be updated at any one time, add your pagination code first. If you need help setting this up, please see WFA's repo *[here](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*. 
+If there are more than 1,000 records that will need to be updated at any one time, add your pagination code first. If you need help setting this up, please see WFA's repo *[here](https://github.com/TheWorkflowAcademy/api-pagination-zohocrm)*. 
 
 ```
 allRecords = List();
