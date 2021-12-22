@@ -12,13 +12,13 @@ To set up a schedule, navigate to Settings > Automation > Schedules in the CRM. 
 
 <img src="create.PNG" width="600">
 
-Select either "Writing Function" or "From existing functions". *Note* - if you decide to use a previously written function, it will need to be a parameterless function (eg: don't select a module and id) since these actions aren't tied to a specific record. For new functions, you won't see the usual list of modules if you try to add parameters. Don't any parameters.
+Select either "Writing Function" or "From existing functions". *Note* - if you decide to use a previously written function, it will need to be a parameterless function (eg: don't select a module and id) since these actions aren't tied to a specific record. For new functions, do not add any parameters. (You won't see the usual list of modules if you try to.)
 For this tutorial, we will be writing a new function to update the Current Age field in the Contacts module.
 
 ## Write Your Function
 
 There are a couple of ways to implement this. If you don't anticipate having more than 1,000 records at any one time to search, your function may look like the sample below.
-First, you will need to get a list of all records in the module, or custom view, depending on your use case. Next, iterate over all records that you want to perform your function on. This particular example calculates the age based on the Contact Date of Birth field as long as it's not null, then sets the Current Age field accordingly.
+First, you will need to get a list of all records in the module, or custom view, depending on your use case. Next, write a for each loop to iterate over all records that you want to perform your function on. This particular example calculates the age based on the Contact Date of Birth field as long as it's not null, then sets the Current Age field accordingly.
 
 ```
 getContacts = zoho.crm.getRecords("Contacts");
@@ -63,7 +63,7 @@ for each  page in pageIterationList
 }
 
 ```
-Next, use the allRecords list variable set in the pagination code above to iterate through and update each record.
+Next, use the allRecords list variable set in the pagination code above to loop through and update each record.
 
 ```
 getContacts = allRecords;
